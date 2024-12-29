@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <audio id="background-music" autoplay loop>
-        <source src="musik/bersamamu.mp3" type="audio/mpeg">
-        Browser anda tidak mendukung tag audio.
-    </audio>
-    
+    <audio id="background-music" src="musik/besamamu.mp3" preload="auto"></audio>
+
     <header>
         <div class="hero">
             <h1>For the Love of My Life</h1>
@@ -39,10 +36,18 @@
         <p>My love for you grows stronger every day. Thank you for being my rock, my best friend, and my forever.</p>
     </section>
 
+    <button id="play-music">Play Music</button>
+
     <footer>
         <p>&copy; PiJar 2024 Forever Yours. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.getElementById('play-music').addEventListener('click', function() {
+            var audio = document.getElementById('background-music');
+            audio.play();
+        });
+    </script>
 </body>
 </html>

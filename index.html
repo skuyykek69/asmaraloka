@@ -29,6 +29,7 @@
             <img src="images/photo2.jpg" alt="Memory 2">
             <img src="images/photo3.png" alt="Memory 3">
             <img src="images/photo4.jpg" alt="Memory 4">
+            <img src="images/photo5.jpg" alt="Memory 5">
         </div>
     </section>
 
@@ -45,10 +46,14 @@
 
     <script src="script.js"></script>
     <script>
-        document.getElementById('play-music').addEventListener('click', function() {
-            var audio = document.getElementById('background-music');
-            audio.play();
-        });
-    </script>
+    $(document).ready(function () {
+      var audio = new Audio('musik/bersamamu.mp3');
+      $("#tombol").click(function () {
+        $("#kontener2").fadeOut();
+        $("#kontener").fadeIn("4000");
+        audio.play();
+      });
+    });
+  </script>
 </body>
 </html>

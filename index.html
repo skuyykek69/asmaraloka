@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <audio id="background-music" src="musik/besamamu.mp3" preload="auto"></audio>
+    <audio id="background-music" src="musik/bersamamu.mp3" preload="auto"></audio>
 
     <header>
         <div class="hero">
             <h1>For the Love of My Life</h1>
             <p>You are my everything.</p>
-            <a href="#our-story" class="btn">Our Story</a>
         </div>
     </header>
 
@@ -38,39 +37,19 @@
             <h2>A Love Note</h2>
             <p>My love for you grows stronger every day. Thank you for being my rock, my best friend, and my forever.</p>
         </section>
-
-        <button id="play-music">Play Music</button>
     </main>
 
     <footer>
         <p>&copy; PiJar 2024 Forever Yours. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var audio = document.getElementById('background-music');
-            var playButton = document.getElementById('play-music');
-
-            // Fungsi untuk memutar musik
-            function playMusic() {
-                audio.play().catch(function(error) {
-                    console.log("Autoplay was prevented. User interaction is required.");
-                });
-            }
 
             // Memutar musik saat halaman dimuat
-            playMusic();
-
-            // Menambahkan event listener untuk tombol
-            playButton.addEventListener('click', function () {
-                if (audio.paused) {
-                    audio.play();
-                    playButton.textContent = 'Pause Music';
-                } else {
-                    audio.pause();
-                    playButton.textContent = 'Play Music';
-                }
+            audio.play().catch(function(error) {
+                console.log("Autoplay was prevented. User interaction is required.");
             });
         });
     </script>

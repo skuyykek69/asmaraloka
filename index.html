@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To My Love</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <audio id="background-music" src="musik/bersamamu.mp3" preload="auto"></audio>
+    <audio id="background-music" src="musik/bersamamu.mp3" preload="auto" autoplay muted></audio>
 
     <header>
         <div class="hero">
             <h1>For the Love of My Life</h1>
             <p>You are my everything.</p>
-            <button id="play-music" class="tombol">Play Music</button>
+            <button id="play-music" class="tombol">Unmute Music</button>
         </div>
     </header>
 
@@ -48,21 +49,28 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var audio = document.getElementById('background-music');
-            var playButton = document.getElementById('play-music');
+        $(document).ready(function () {
+            var audio = $('#background-music')[0];
+            var playButton = $('#play-music');
+
+            // Memutar audio secara otomatis saat halaman dimuat
+            audio.play().catch(function (error) {
+                console.log("Autoplay blocked, waiting for user interaction.");
+            });
 
             // Menambahkan event listener untuk tombol
-            playButton.addEventListener('click', function () {
+            playButton.on('click', function () {
                 if (audio.paused) {
+                    audio.muted = false; // Unmute audio
                     audio.play().then(() => {
-                        playButton.textContent = 'Pause Music';
+                        playButton.text('Mute Music');
                     }).catch((error) => {
                         console.log("Error playing audio: ", error);
                     });
                 } else {
                     audio.pause();
-                    playButton.textContent = 'Play Music';
+                    audio.muted = true; // Mute audio
+                    playButton.text('Unmute Music');
                 }
             });
         });

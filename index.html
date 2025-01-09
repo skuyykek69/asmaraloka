@@ -13,6 +13,7 @@
         <div class="hero">
             <h1>For the Love of My Life</h1>
             <p>You are my everything.</p>
+            <button id="play-music" class="tombol">Play Music</button>
         </div>
     </header>
 
@@ -33,7 +34,6 @@
                 <img src="images/photo6.jpg" alt="Memory 6">
                 <img src="images/photo7.jpg" alt="Memory 7">
                 <img src="images/photo8.jpg" alt="Memory 8">
-                //img src="images/photo9.jpg" alt="Memory 9">
             </div>
         </section>
 
@@ -50,10 +50,20 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var audio = document.getElementById('background-music');
+            var playButton = document.getElementById('play-music');
 
-            // Memutar musik saat halaman dimuat
-            audio.play().catch(function(error) {
-                console.log("Autoplay was prevented. User interaction is required.");
+            // Menambahkan event listener untuk tombol
+            playButton.addEventListener('click', function () {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        playButton.textContent = 'Pause Music';
+                    }).catch((error) => {
+                        console.log("Error playing audio: ", error);
+                    });
+                } else {
+                    audio.pause();
+                    playButton.textContent = 'Play Music';
+                }
             });
         });
     </script>

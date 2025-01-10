@@ -14,6 +14,7 @@
         <div class="hero">
             <h1>For the Love of My Life</h1>
             <p>You are my everything.</p>
+            <button id="play-music" class="tombol">Unmute Music</button>
         </div>
     </header>
 
@@ -26,14 +27,14 @@
         <section id="gallery" class="fade-in">
             <h2>Memories We've Made</h2>
             <div class="gallery-images">
-                <img src="images/photo1.jpg" alt="Memory 1: A beautiful sunset together">
-                <img src="images/photo2.jpg" alt="Memory 2: Our first trip">
-                <img src="images/photo3.png" alt="Memory 3: A special dinner">
-                <img src="images/photo4.jpg" alt="Memory 4: Celebrating an anniversary">
-                <img src="images/photo5.jpg" alt="Memory 5: A fun day at the park">
-                <img src="images/photo6.jpg" alt="Memory 6: A cozy night in">
-                <img src="images/photo7.jpg" alt="Memory 7: A surprise party">
-                <img src="images/photo8.jpg" alt="Memory 8: Our wedding day">
+                <img src="images/photo1.jpg" alt="Memory 1">
+                <img src="images/photo2.jpg" alt="Memory 2">
+                <img src="images/photo3.png" alt="Memory 3">
+                <img src="images/photo4.jpg" alt="Memory 4">
+                <img src="images/photo5.jpg" alt="Memory 5">
+                <img src="images/photo6.jpg" alt="Memory 6">
+                <img src="images/photo7.jpg" alt="Memory 7">
+                <img src="images/photo8.jpg" alt="Memory 8">
             </div>
         </section>
 
@@ -46,8 +47,6 @@
     <footer>
         <p>&copy; PiJar 2024 Forever Yours. All Rights Reserved.</p>
     </footer>
-
-    <button id="play-music" class="tombol" aria-label="Unmute Music">Unmute Music</button>
 
     <script>
         $(document).ready(function () {
@@ -65,16 +64,13 @@
                     audio.muted = false; // Unmute audio
                     audio.play().then(() => {
                         playButton.text('Mute Music');
-                        playButton.attr('aria-label', 'Mute Music');
                     }).catch((error) => {
                         console.log("Error playing audio: ", error);
-                        alert("Gagal memutar musik. Silakan coba lagi.");
                     });
                 } else {
                     audio.pause();
                     audio.muted = true; // Mute audio
                     playButton.text('Unmute Music');
-                    playButton.attr('aria-label', 'Unmute Music');
                 }
             });
         });

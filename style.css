@@ -30,6 +30,10 @@ header {
     font-size: 1em;
     transition: background-color 0.3s;
     border-radius: 5px;
+    position: fixed; /* Mengapungkan tombol */
+    bottom: 20px; /* Jarak dari bawah */
+    right: 20px; /* Jarak dari kanan */
+    z-index: 1000; /* Memastikan tombol berada di atas elemen lain */
 }
 
 .tombol:hover {

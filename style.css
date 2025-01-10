@@ -91,6 +91,23 @@ section p {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
+header .hero .btn {
+    position: fixed; /* Mengatur posisi tombol menjadi tetap */
+    bottom: 20px; /* Jarak dari bawah */
+    right: 20px; /* Jarak dari kanan */
+    z-index: 2; /* Pastikan tombol berada di atas elemen lain */
+    padding: 12px 25px;
+    background-color: #ff6b6b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+}
+
+header .hero .btn:hover {
+    background-color: #ee5253;
+}
+
 footer {
     text-align: center;
     padding: 30px;

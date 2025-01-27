@@ -6,15 +6,26 @@
     <title>To My Love</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* CSS untuk menyembunyikan konten selain hero pada awalnya */
+        main, footer {
+            display: none;
+        }
+
+        /* Tampilkan main dan footer saat class "show-content" ditambahkan ke body */
+        body.show-content main, body.show-content footer {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <audio id="background-music" src="musik/bersamamu.mp3" preload="auto" autoplay muted></audio>
+    <audio id="background-music" src="musik/MyHeart.mp3" preload="auto"></audio>
 
     <header>
         <div class="hero">
             <h1>For the Love of My Life</h1>
-            <p>You are my everything.</p>
-            <button id="play-music" class="btn">Unmute Music</button>
+            <p>You are my everything.<br>Forever and Always</p>
+            <button id="continue-button" class="btn">see journey</button>
         </div>
     </header>
 
@@ -49,29 +60,31 @@
     </footer>
 
     <script>
-        $(document).ready(function () {
-            var audio = $('#background-music')[0];
-            var playButton = $('#play-music');
+        document.addEventListener('DOMContentLoaded', () => {
+            const continueButton = document.getElementById('continue-button');
+            const audio = document.getElementById('background-music');
+            const body = document.body;
 
-            // Memutar audio secara otomatis saat halaman dimuat
-            audio.play().catch(function (error) {
-                console.log("Autoplay blocked, waiting for user interaction.");
-            });
-
-            // Menambahkan event listener untuk tombol
-            playButton.on('click', function () {
+            continueButton.addEventListener('click', () => {
+                body.classList.add('show-content');
                 if (audio.paused) {
-                    audio.muted = false; // Unmute audio
-                    audio.play().then(() => {
-                        playButton.text('Mute Music');
-                    }).catch((error) => {
-                        console.log("Error playing audio: ", error);
+                    audio.play().catch(function (error) {
+                        console.log("Autoplay blocked, waiting for user interaction.");
                     });
-                } else {
-                    audio.pause();
-                    audio.muted = true; // Mute audio
-                    playButton.text('Unmute Music');
                 }
+                continueButton.style.display = 'none';
+
+                const sections = document.querySelectorAll('.fade-in');
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                });
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
             });
         });
     </script>

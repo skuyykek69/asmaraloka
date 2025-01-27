@@ -56,7 +56,7 @@ header .hero .btn {
     border: none;
     cursor: pointer;
     margin-top: 20px;
-    animation: pulse 2s infinite; /* Efek berdenyut */
+    animation: pulse 1s infinite; /* Efek berdenyut */
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transisi untuk efek hover */
 }
 

@@ -97,39 +97,37 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const continueButton = document.getElementById('continue-button');
-            const audio = document.getElementById('background-music');
-            const body = document.body;
-            const imageContainers = document.querySelectorAll('.image-container');
+    const continueButton = document.getElementById('continue-button');
+    const audio = document.getElementById('background-music');
+    const body = document.body;
+    const imageContainers = document.querySelectorAll('.image-container');
 
-            continueButton.addEventListener('click', () => {
-                body.classList.add('show-content');
-                if (audio.paused) {
-                    audio.play().catch(function (error) {
-                        console.log("Autoplay blocked, waiting for user interaction.");
-                    });
+    continueButton.addEventListener('click', () => {
+        body.classList.add('show-content');
+        if (audio.paused) {
+            audio.play().catch(console.error);
+        }
+        continueButton.style.display = 'none';
+
+        const sections = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
-                continueButton.style.display = 'none';
-
-                const sections = document.querySelectorAll('.fade-in');
-                const observer = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                });
-                sections.forEach(section => {
-                    observer.observe(section);
-                });
-            });
-
-            imageContainers.forEach(container => {
-                container.addEventListener('click', () => {
-                    container.classList.toggle('active');
-                });
             });
         });
+        sections.forEach(section => observer.observe(section));
+    });
+
+    imageContainers.forEach(container => {
+        container.addEventListener('click', () => {
+            imageContainers.forEach(c => c.classList.remove('active'));
+            container.classList.add('active');
+        });
+    });
+});
     </script>
 </body>
 </html>

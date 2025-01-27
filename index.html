@@ -8,13 +8,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         /* CSS untuk menyembunyikan konten selain hero pada awalnya */
-        main, footer {
+        body:not(.show-content) main,
+        body:not(.show-content) footer {
             display: none;
-        }
-
-        /* Tampilkan main dan footer saat class "show-content" ditambahkan ke body */
-        body.show-content main, body.show-content footer {
-            display: block;
         }
     </style>
 </head>
@@ -25,7 +21,7 @@
         <div class="hero">
             <h1>For the Love of My Life</h1>
             <p>You are my everything.<br>Forever and Always</p>
-            <button id="continue-button" class="btn">see journey</button>
+            <button id="continue-button" class="btn">Continue</button>
         </div>
     </header>
 

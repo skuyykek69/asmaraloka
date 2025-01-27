@@ -122,9 +122,22 @@
     });
 
     imageContainers.forEach(container => {
-        container.addEventListener('click', () => {
-            imageContainers.forEach(c => c.classList.remove('active'));
-            container.classList.add('active');
+        container.addEventListener('click', (event) => {
+            imageContainers.forEach(c => {
+                if (c !== container) {
+                    c.classList.remove('active');
+                }
+            });
+            container.classList.toggle('active');
+
+            if (container.classList.contains('active')) {
+                document.addEventListener('click', function outsideClickListener(event) {
+                    if (!container.contains(event.target)) {
+                        container.classList.remove('active');
+                        document.removeEventListener('click', outsideClickListener);
+                    }
+                });
+            }
         });
     });
 });

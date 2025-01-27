@@ -17,7 +17,7 @@ header .hero {
     text-align: center;
     color: #fff;
     position: relative;
-    overflow: hidden; /* Mencegah konten meluap */
+    overflow: hidden;
 }
 
 header .hero::after {
@@ -32,19 +32,19 @@ header .hero::after {
 }
 
 header .hero * {
-    z-index: 2; /* Memastikan teks dan tombol di atas overlay */
+    z-index: 2;
 }
 
 header .hero h1 {
     font-size: 3.5em;
     margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Efek bayangan teks */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 header .hero p {
     font-size: 1.5em;
     margin: 10px 0 20px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Efek bayangan teks */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 header .hero .btn {
@@ -56,12 +56,12 @@ header .hero .btn {
     transition: background-color 0.3s ease, transform 0.2s ease;
     border: none;
     cursor: pointer;
-    margin-top: 20px; /* Jarak tombol dari teks */
+    margin-top: 20px;
 }
 
 header .hero .btn:hover {
     background-color: #ee5253;
-    transform: scale(1.05); /* Efek membesar saat dihover */
+    transform: scale(1.05);
 }
 
 section {
@@ -89,32 +89,28 @@ section p {
     flex-wrap: wrap;
 }
 
-.image-container {
+.image-container { /* Ini bagian yang sebelumnya terpotong */
     position: relative;
-    overflow: hidden; /* Mencegah caption keluar dari container */
-    cursor: pointer; /* Memberikan indikasi bahwa gambar bisa diklik */
-    width: calc(33.33% - 20px); /* Adjust width for gap */
-    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    width: calc(33.33% - 40px); /* Lebar dengan memperhitungkan gap */
+    margin-bottom: 20px; /* Jarak antar container gambar */
 }
 
 #gallery img {
     width: 100%;
     height: 100%;
     border-radius: 15px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
     object-fit: cover;
-    filter: blur(0px);
+    transition: transform 0.4s ease, filter 0.3s ease;
+    filter: blur(0);
 }
 
-.image-container:hover #gallery img{
+.image-container:hover #gallery img,
+.image-container.active #gallery img {
     filter: blur(3px);
     transform: scale(1.1);
 }
-.image-container.active #gallery img{
-    filter: blur(3px);
-    transform: scale(1.1);
-}
-
 
 .overlay {
     position: absolute;
@@ -128,11 +124,12 @@ section p {
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s ease, backdrop-filter 0.3s ease;
-    backdrop-filter: blur(0px);
-    z-index: 3; /* Memastikan overlay di atas gambar */
+    backdrop-filter: blur(0); /* Blur awal */
+    z-index: 3;
 }
 
-.image-container:hover .overlay {
+.image-container:hover .overlay,
+.image-container.active .overlay {
     opacity: 1;
     backdrop-filter: blur(5px);
 }
@@ -146,27 +143,26 @@ section p {
     transition: transform 0.3s ease;
 }
 
-.image-container:hover .overlay .caption {
-    transform: scale(1);
-}
-.image-container.active .overlay {
-    opacity: 1;
-    backdrop-filter: blur(5px);
-}
+.image-container:hover .overlay .caption,
 .image-container.active .overlay .caption {
     transform: scale(1);
 }
 
 @media (max-width: 768px) {
     .image-container {
-        width: calc(50% - 20px);
+        width: calc(50% - 40px); /* Dua gambar per baris */
         height: 250px;
     }
 }
-@media (max-width: 500px){
-    .image-container{
-        width: 100%;
+
+@media (max-width: 500px) {
+    .image-container {
+        width: calc(100% - 40px); /* Satu gambar per baris */
         height: 200px;
+        margin: 10px 20px; /* margin agar tidak terlalu mepet layar */
+    }
+    #gallery .gallery-images{
+        gap: 10px;
     }
 }
 

@@ -38,14 +38,54 @@
         <section id="gallery" class="fade-in">
             <h2>Memories We've Made</h2>
             <div class="gallery-images">
-                <img src="images/photo1.jpg" alt="Memory 1: Kondangan">
-                <img src="images/photo2.jpg" alt="Memory 2: Night Ride">
-                <img src="images/photo3.png" alt="Memory 3: Quality Time on JatimPark">
-                <img src="images/photo4.jpg" alt="Memory 4">
-                <img src="images/photo5.jpg" alt="Memory 5">
-                <img src="images/photo6.jpg" alt="Memory 6">
-                <img src="images/photo7.jpg" alt="Memory 7">
-                <img src="images/photo8.jpg" alt="Memory 8">
+                <div class="image-container">
+                    <img src="images/photo1.jpg" alt="Memory 1: Kondangan">
+                    <div class="overlay">
+                        <div class="caption">Kondangan bersama teman ke acara pernikahan owner apotek nina sehat.</div>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <img src="images/photo2.jpg" alt="Memory 2: Night Ride">
+                    <div class="overlay">
+                        <div class="caption">Nightride tour Malang - Lumajang.</div>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <img src="images/photo3.png" alt="Memory 3: Rumah Kaca">
+                    <div class="overlay">
+                        <div class="caption">Bermain ke rumah kaca, disana Pinta sedikit takut hehe.</div>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <img src="images/photo4.jpg" alt="Memory 4: Pap Skincare">
+                    <div class="overlay">
+                        <div class="caption">Pap setelah skincare-an bareng.</div>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <img src="images/photo5.jpg" alt="Memory 5: Mini Bioskop">
+                    <div class="overlay">
+                        <div class="caption">Nonton mini bioskop 3D bersama kelompok santri.</div>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <img src="images/photo6.jpg" alt="Memory 6: Beli Kebab">
+                    <div class="overlay">
+                        <div class="caption">Membeli kebab karena sudah lama ngidam wkw.</div>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <img src="images/photo7.jpg" alt="Memory 7: Cari Kerja">
+                    <div class="overlay">
+                        <div class="caption">Perjuangan bolak balik Lumajang - Malang demi mencari kerja.</div>
+                    </div>
+                </div>
+                <div class="image-container">
+                    <img src="images/photo8.jpg" alt="Memory 8: Balik Malang">
+                    <div class="overlay">
+                        <div class="caption">Kelaparan pengen beli kebab dan baru balik dari Malang.</div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -64,6 +104,7 @@
             const continueButton = document.getElementById('continue-button');
             const audio = document.getElementById('background-music');
             const body = document.body;
+            const imageContainers = document.querySelectorAll('.image-container');
 
             continueButton.addEventListener('click', () => {
                 body.classList.add('show-content');
@@ -84,6 +125,12 @@
                 });
                 sections.forEach(section => {
                     observer.observe(section);
+                });
+            });
+
+            imageContainers.forEach(container => {
+                container.addEventListener('click', () => {
+                    container.classList.toggle('active');
                 });
             });
         });

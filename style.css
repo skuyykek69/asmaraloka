@@ -4,6 +4,7 @@ body {
     padding: 0;
     background-color: #fdf3f3;
     color: #333;
+    line-height: 1.6;
 }
 
 header .hero {
@@ -16,6 +17,7 @@ header .hero {
     text-align: center;
     color: #fff;
     position: relative;
+    overflow: hidden;
 }
 
 header .hero::after {
@@ -26,19 +28,23 @@ header .hero::after {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
+    z-index: 1;
+}
+
+header .hero * {
+    z-index: 2;
 }
 
 header .hero h1 {
     font-size: 3.5em;
-    z-index: 1;
     margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 header .hero p {
     font-size: 1.5em;
-    z-index: 1;
     margin: 10px 0 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 header .hero .btn {
@@ -47,12 +53,15 @@ header .hero .btn {
     color: #fff;
     text-decoration: none;
     border-radius: 50px;
-    z-index: 1;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px; /* Jarak dari teks "Forever and Always" */
 }
 
 header .hero .btn:hover {
     background-color: #ee5253;
+    transform: scale(1.05);
 }
 
 section {
@@ -81,31 +90,29 @@ section p {
 }
 
 #gallery img {
-    width: 30%;
+    width: calc(33.33% - 20px);
     border-radius: 15px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    object-fit: cover;
+    height: 300px;
+}
+
+@media (max-width: 768px) {
+    #gallery img {
+        width: calc(50% - 20px);
+        height: 250px;
+    }
+}
+@media (max-width: 500px){
+    #gallery img{
+        width: 100%;
+        height: 200px;
+    }
 }
 
 #gallery img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-header .hero .btn {
-    position: fixed; /* Mengatur posisi tombol menjadi tetap */
-    bottom: 20px; /* Jarak dari bawah */
-    right: 20px; /* Jarak dari kanan */
-    z-index: 2; /* Pastikan tombol berada di atas elemen lain */
-    padding: 12px 25px;
-    background-color: #ff6b6b;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
-}
-
-header .hero .btn:hover {
-    background-color: #ee5253;
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 footer {
@@ -114,4 +121,13 @@ footer {
     background-color: #ff6b6b;
     color: #fff;
     font-size: 1em;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Durasi transisi diperlambat */
+}
+
+.fade-in.visible {
+    opacity: 1;
 }

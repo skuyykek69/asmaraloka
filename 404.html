@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Tidak Ditemukan - 404</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Latar belakang abu-abu muda */
+            font-family: 'Ruda', sans-serif; /* Font yang digunakan pada contoh */
+            overflow: hidden; /* Mencegah scroll karena animasi awan */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Menata elemen secara vertikal */
+        }
+
+        #error-container {
+            text-align: center;
+            color: #555; /* Warna teks utama */
+            z-index: 2; /* Pastikan teks di atas awan */
+        }
+
+        .error-code {
+            font-size: 8em;
+            color: #333;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+
+        .error-message {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 0.7em 1.5em;
+            background-color: #3498db; /* Warna tombol biru */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 1em;
+        }
+
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+
+        .copyright {
+            font-size: 0.8em;
+            color: #777;
+            margin-top: 2em;
+        }
+
+        /* Animasi Awan */
+        .cloud {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: '';
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        /* Ukuran dan Posisi Awan */
+        .cloud1 {
+            width: 150px;
+            height: 60px;
+            top: 10%;
+            left: 15%;
+            animation: moveCloud1 5s linear infinite alternate;
+        }
+
+        .cloud1::before {
+            width: 50px;
+            height: 50px;
+            top: -20px;
+            left: 30px;
+        }
+
+        .cloud1::after {
+            width: 80px;
+            height: 80px;
+            top: -30px;
+            right: 10px;
+        }
+
+        .cloud2 {
+            width: 200px;
+            height: 80px;
+            top: 25%;
+            right: 10%;
+            animation: moveCloud2 10s linear infinite alternate-reverse;
+        }
+
+        .cloud2::before {
+            width: 70px;
+            height: 70px;
+            top: -30px;
+            left: 20px;
+        }
+
+        .cloud2::after {
+            width: 100px;
+            height: 100px;
+            bottom: -40px;
+            right: 20px;
+        }
+
+        .cloud3 {
+            width: 100px;
+            height: 40px;
+            bottom: 15%;
+            left: 30%;
+            animation: moveCloud3 2s linear infinite alternate;
+        }
+
+        .cloud3::before {
+            width: 30px;
+            height: 30px;
+            top: -15px;
+            right: 10px;
+        }
+
+        .cloud4 {
+            width: 180px;
+            height: 70px;
+            bottom: 30%;
+            right: 25%;
+            animation: moveCloud4 8s linear infinite alternate-reverse;
+        }
+
+        .cloud4::before {
+            width: 60px;
+            height: 60px;
+            top: -25px;
+            left: 15px;
+        }
+
+        /* Keyframes untuk Animasi Awan */
+        @keyframes moveCloud1 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(20px); }
+        }
+
+        @keyframes moveCloud2 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-30px); }
+        }
+
+        @keyframes moveCloud3 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(15px); }
+        }
+
+        @keyframes moveCloud4 {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-25px); }
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&display=swap');
+    </style>
+</head>
+<body>
+    <div id="error-container">
+        <h1 class="error-code">404</h1>
+        <p class="error-message">HALAMAN TIDAK DITEMUKAN!</p>
+        <p><a class='back-link' href='https://thisonky.web.app' title='Hubungi admin untuk info lebih lanjut'>Hubungi Administrator</a></p>
+        <p class="copyright">𝙆𝙀𝙆 𝕏 𝙋𝙧𝙤𝙟𝙚𝙘𝙩𝙨 © 2021 - <script>document.write(new Date().getFullYear())</script>. All Rights Reserved</p>
+    </div>
+
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="cloud cloud4"></div>
+</body>
+</html>
